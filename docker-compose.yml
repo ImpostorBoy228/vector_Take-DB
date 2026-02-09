@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: ideas-archive-db
+    image: pgvector/pgvector:pg16  # Актуальный официальный образ (Postgres 16 + pgvector свежий)
+    # Альтернативы: pg17 или pg15, если нужно конкретно
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Linux/etc1/born
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  api:
+    container_name: ideas-archive-api
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: ****
+    depends_on:
+      - db
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

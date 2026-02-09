@@ -1,0 +1,14 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch==2.4.1
+torchvision==0.19.1
+torchaudio==2.4.1
+asyncpg
+fastapi==0.113.0
+uvicorn==0.30.6
+sqlalchemy[asyncio]==2.0.35
+psycopg[binary]
+pydantic==2.9.2
+psycopg2-binary==2.9.9
+sentence-transformers==5.2.0
+pgvector==0.3.0
